@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Taller complementos</title>
+</head>
+<body>
+<script 
+    src="https://cdnjs.cloudflare.com/ajax/libs/three.js/94/three.min.js" integrity="sha512-ZGgXd6TB5qjtvTU6Q5o/LJM4pwLNy8U8XXJh+vJZDXp2wC8ASrl4WOeivaq2fpYc3TnTCLzyDvVjY8YhvNYaXg==" crossorigin="anonymous">
+</script>
+<script>
+    var scene;
+    var camera;
+    var renderer;
+    var material;
+
+    function createCamera(){
+        camera = new THREE.PerspectiveCamera( 75, 
+        window.innerWidth / window.innerHeight, 1, 100 );
+        camera.position.set(0,0,20);
+
+    }
+
+
+    function createRenderer(){
+        renderer = new THREE.WebGLRenderer();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        renderer.setClearColor(new THREE.Color(0xffffff));
+        document.body.appendChild(renderer.domElement);
+    }
+
+    function createcube(){
+        let geometry = new THREE.CubeGeometry(2,2,2);
+        let material = new THREE.MeshNormalMaterial({color: 0x4A148C });
+        var cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
+
+    }
+
+    function init(){
+        //Crear scene
+        scene = new THREE.Scene();
+
+        //Crear Camera
+        createCamera();
+
+
+        //Crear renderer
+        createRenderer();
+
+        renderer.render(scene, camera);
+
+
+
+    }
+    init();
+
+</script>
+
+</body>
+</html>
